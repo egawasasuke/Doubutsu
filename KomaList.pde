@@ -1,7 +1,10 @@
 class KomaList {
   AbstractKoma[] komaArray = new AbstractKoma[10];
+  GameStatus gs;
 
-  KomaList() {
+  KomaList(GameStatus gs) {
+    this.gs = gs;
+    
     komaArray[0] = new Hiyoko("hiyoko", 2, 1, 0, true);
     komaArray[1] = new Hiyoko("hiyoko", 3, 1, 1, true);
     komaArray[2] = new Zou("zou", 1, 0, 0, true);
@@ -13,12 +16,14 @@ class KomaList {
     komaArray[8] = new Niwatori("niwatori", 0, 0, 0, false);
     komaArray[9] = new Niwatori("niwatori", 5, 0, 1, false);
   }
+  
   void draw() {
     for (AbstractKoma k : komaArray) {
       k.draw();
     }
   }
-    AbstractKoma getSelectedKoma() {
+
+  AbstractKoma getSelectedKoma() {
     for (AbstractKoma k : komaArray) {
       if (k.kStat.selected) return k;
     }
